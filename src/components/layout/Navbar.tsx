@@ -1,84 +1,123 @@
-// src/components/layout/Navbar.tsx
+// src/components/Navigation.tsx
 'use client';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../ui/ThemeProvider';
+import { usePathname } from 'next/navigation';
+import { Menu, X, Moon, Sun } from 'lucide-react';
+import { useTheme } from '../theme/ThemeProvider';
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/projects', label: 'Projects' },
-  { href: '/skills', label: 'Skills' },
   { href: '/contact', label: 'Contact' },
 ];
 
-export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+// Separate ThemeToggle to inline it (avoid the import issue)
+function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-  
+
   return (
-    <nav className="sticky top-0 z-50 px-4 py-4 bg-white dark:bg-gray-800 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="font-bold text-2xl">
-          <span className="text-blue-600">Dev</span>Portfolio
-        </Link>
-        
-        <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.href} 
-              href={link.href}
-              className="font-medium hover:text-blue-600 transition-colors"
-            >
-              {link.label}
+    <button
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+      onClick={toggleTheme}
+    >
+      {theme === 'dark' ? (
+        <Sun className="h-5 w-5 text-yellow-400" />
+      ) : (
+        <Moon className="h-5 w-5 text-gray-600" />
+      )}
+    </button>
+  );
+}
+
+export default function Navigation() {
+  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Add a client-side rendering check
+  const [mounted, setMounted] = useState(false);
+
+  // Only show theme toggle after component has mounted
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // The theme toggle button that handles SSR gracefully
+  const themeToggleButton = mounted ? <ThemeToggle /> : null;
+
+  return (
+    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              Aayushi
             </Link>
-          ))}
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-        </div>
-        
-        <div className="flex md:hidden items-center space-x-4">
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-            aria-label="Toggle menu"
-          >
-            <Menu size={24} />
-          </button>
-        </div>
-      </div>
-      
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute left-0 right-0 bg-white dark:bg-gray-800 shadow-md p-4">
-          <div className="flex flex-col space-y-4">
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link 
-                key={link.href} 
+              <Link
+                key={link.href}
                 href={link.href}
-                className="font-medium hover:text-blue-600 transition-colors p-2"
+                className={`text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
+                  pathname === link.href
+                    ? 'text-blue-600 dark:text-blue-400'
+                    : 'text-gray-700 dark:text-gray-300'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Theme Toggle */}
+            {themeToggleButton}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            {themeToggleButton}
+            <button
+              onClick={toggleMenu}
+              className="ml-2 p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
+              aria-label="Toggle mobile menu"
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <nav className="md:hidden py-4 space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block px-2 py-2 text-base font-medium rounded-md transition-colors ${
+                  pathname === link.href
+                    ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-          </div>
-        </div>
-      )}
-    </nav>
+          </nav>
+        )}
+      </div>
+    </header>
   );
 }
