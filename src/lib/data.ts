@@ -84,3 +84,56 @@ export type Project = {
     { name: 'Linux/Unix', category: 'other' },
   ];
   
+  export interface ExperienceItem {
+    id: string;
+    title: string;
+    organization: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+    skills: string[];
+  }
+  
+  export const experienceData: ExperienceItem[] = [
+    {
+      id: 'software-engineer-asu',
+      title: 'Software Engineer - Graduate Research Aide',
+      organization: 'Knowledge Exchange for Resilience at ASU',
+      startDate: 'Jun 2024',
+      endDate: 'Present',
+      description:
+        'Led full-stack development of the Knowledge Alliance Tool (KAT) using React, .NET Core, and FastAPI. Improved semantic search with FAISS, optimized PostgreSQL queries, migrated data from SQL Server, and enforced secure access with JWT-based RBAC.',
+      skills: ['React', '.NET Core', 'FastAPI', 'PostgreSQL', 'SQL Server', 'FAISS', 'RBAC', 'JWT', 'CI/CD', 'DynamodB']
+    },
+    {
+      id: 'senior-analyst-accenture',
+      title: 'Application Development Senior Analyst',
+      organization: 'Accenture',
+      startDate: 'Mar 2022',
+      endDate: 'Jul 2023',
+      description:
+        'Developed distributed MES APIs and dashboards using .NET, React, and Azure. Refactored PL/SQL for faster APIs, implemented CI/CD pipelines, real-time monitoring with Grafana, and automated multi-tenant script deployments.',
+      skills: ['C#', '.NET', 'React', 'Azure', 'PL/SQL', 'Docker', 'Grafana', 'Prometheus']
+    },
+    {
+      id: 'analyst-accenture',
+      title: 'Application Development Analyst',
+      organization: 'Accenture',
+      startDate: 'Jun 2021',
+      endDate: 'Feb 2022',
+      description:
+        'Built serverless data pipelines with Azure Functions for financial data processing. Created KPIs and reporting APIs secured by AAD, handling millions of records efficiently.',
+      skills: ['Azure Functions', 'CI/CD', 'SQL', 'AAD', 'ETL', 'API Development']
+    },
+    {
+      id: 'associate-accenture',
+      title: 'Application Development Associate',
+      organization: 'Accenture',
+      startDate: 'Aug 2019',
+      endDate: 'May 2021',
+      description:
+        'Developed responsive web interfaces and integrated real-time MES dashboards with SCADA/PLC systems for a tire manufacturing client. Translated complex workflows into scalable .NET + Angular solutions.',
+      skills: ['C#', '.NET', 'Angular', 'SCADA', 'MES', 'Manufacturing Systems']
+    }
+  ];
+  
