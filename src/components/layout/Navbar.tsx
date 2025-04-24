@@ -7,11 +7,12 @@ import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../theme/ThemeProvider';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
+  // { href: '/', label: 'Home' },
+  // { href: '/', label: 'About' },
   { href: '/projects', label: 'Projects' },
   { href: '/experience', label: 'Experience'},
   { href: '/contact', label: 'Contact' },
+  { href: '/files/Aayushi_Resume_1.pdf', label: 'Resume' },
 ];
 
 // Separate ThemeToggle to inline it (avoid the import issue)
@@ -52,7 +53,7 @@ export default function Navigation() {
   const themeToggleButton = mounted ? <ThemeToggle /> : null;
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-sm">
+    <header className="sticky top-0 z-50 bg-gray-100 dark:bg-gray-400 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -79,7 +80,7 @@ export default function Navigation() {
             ))}
 
             {/* Theme Toggle */}
-            {themeToggleButton}
+            {/* {themeToggleButton} */}
           </nav>
 
           {/* Mobile Menu Button */}

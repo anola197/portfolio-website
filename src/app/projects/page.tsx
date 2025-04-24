@@ -22,94 +22,85 @@ type Project = {
 // Sample project data - replace with your own projects
 const projects: Project[] = [
   {
-    id: 'e-commerce-platform',
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce platform built with Next.js, including product management, cart functionality, user authentication, and payment processing.',
-    image: '/images/projects/ecommerce.jpg',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'MongoDB'],
-    githubUrl: 'https://github.com/yourusername/ecommerce-platform',
-    liveUrl: 'https://ecommerce-demo.yourdomain.com',
-    featured: true,
-    category: 'Web Application'
-  },
-  {
-    id: 'task-management-app',
-    title: 'Task Management App',
-    description: 'A Kanban-style task management application with drag-and-drop functionality, team collaboration features, and real-time updates.',
-    image: '/images/projects/task-app.jpg',
-    technologies: ['React', 'Redux', 'Node.js', 'Socket.io', 'PostgreSQL'],
-    githubUrl: 'https://github.com/yourusername/task-management',
-    liveUrl: 'https://tasks.yourdomain.com',
-    featured: true,
-    category: 'Web Application'
-  },
-  {
-    id: 'fitness-tracker',
-    title: 'Fitness Tracker Dashboard',
-    description: 'A fitness tracking application that allows users to log workouts, track progress, and view statistics on a personalized dashboard.',
-    image: '/images/projects/fitness-tracker.jpg',
-    technologies: ['React', 'Chart.js', 'Express', 'MongoDB', 'Auth0'],
-    githubUrl: 'https://github.com/yourusername/fitness-tracker',
-    liveUrl: 'https://fitness.yourdomain.com',
+    id: 'image-recognition',
+    title: 'Image Recognition as a Service',
+    description: 'Python-based cloud video analysis app. Utilizes AWS Lambda to process uploaded videos and perform face recognition on extracted frames.',
+    image: '/images/image-recognition.png',
+    technologies: ['Python', 'AWS Lambda', 'S3', 'Docker'],
+    githubUrl: 'https://github.com/anola197/cse546-project-2-face-recognition-',
+    liveUrl: '',
     featured: false,
-    category: 'Web Application'
+    category: 'Academic Projects'
+  },  
+  {
+    id: 'smart-factory-dashboard',
+    title: 'Smart Factory Monitoring Dashboard',
+    description: 'Built during Honeywell hackathon, a real-time smart factory dashboard integrates Arduino-based IoT sensors and streams data via a Python-Flask API to a centralized dashboard. It features live alerts, historical logs, and ML-powered predictive maintenance to enable rapid fault detection and reduce downtime.',
+    image: '/images/factory-dashboard.png',
+    technologies: ['Python', 'Next.js', 'SQLlite', 'Flask', 'Arduino'],
+    githubUrl: 'https://github.com/anola197/honeywell_hack',
+    liveUrl: '',
+    featured: false,
+    category: 'Hackathons'
   },
   {
-    id: 'weather-app',
-    title: 'Weather Forecast App',
-    description: 'A weather application that provides current conditions and forecasts based on user location or search queries, with interactive maps and visualizations.',
-    image: '/images/projects/weather-app.jpg',
-    technologies: ['React', 'OpenWeather API', 'MapBox', 'CSS Modules'],
-    githubUrl: 'https://github.com/yourusername/weather-app',
-    liveUrl: 'https://weather.yourdomain.com',
+    id: 'werewolves-game',
+    title: 'Distributed Werewolves Multiplayer Game',
+    description: 'A real-time multiplayer social deduction game using Python MPI for distributed communication and multithreading for chat and game logic.',
+    image: '/images/werewolves-mpi.png',
+    technologies: ['Python', 'mpi4py', 'Multithreading'],
+    githubUrl: 'https://github.com/anola197/werewolves-mpi.png',
+    liveUrl: '',
     featured: false,
-    category: 'Web Application'
+    category: 'Academic Projects'
+  },
+  {
+    id: 'happiness-vis',
+    title: 'HappinessVis: Visual Exploration of Happiness Metrics in Multivariate Data',
+    description: 'An interactive D3.js dashboard for exploring global happiness trends (2015–2023). Features include t-SNE projection, choropleth map, radar charts, sparklines, and parallel coordinates for multivariate analysis across countries.',
+    image: '/images/happinessvis.png',
+    technologies: ['D3.js', 'JavaScript', 'HTML/CSS'],
+    githubUrl: 'https://github.com/anola197/happinessvis',
+    liveUrl: '',
+    featured: false,
+    category: 'Academic Projects'
+  },  
+  {
+    id: 'fake-review-detection',
+    title: 'Improving E-Commerce Trust: Fake Review Detection',
+    description: 'Built a machine learning system to detect fake reviews using linguistic and behavioral features from the Amazon Reviews dataset.',
+    image: '/images/fake-review.png',
+    technologies: ['Python', 'scikit-learn', 'TextBlob', 'VADER', 'Pandas'],
+    githubUrl: 'https://github.com/anola197/fake-review-detection',
+    liveUrl: '',
+    featured: false,
+    category: 'Academic Projects'
+  },
+  {
+    id: 'ekonnect-ethical-sketicals',
+    title: 'EKONNECT – Sustainable Heat Exchange Platform',
+    description: 'Built during the Ethical Skeptics Hackathon, EKONNECT is a web platform that connects data centers with local industries to repurpose waste heat. It promotes energy efficiency, reduces carbon emissions, and generates new revenue streams for both sectors.',
+    image: '/images/ekconnect.png',
+    technologies: ['Express.js', 'React.js', 'HTML', 'CSS','MongoDB'],
+    githubUrl: 'https://github.com/anola197/ekonnect-ethical-skeptics',
+    liveUrl: '',
+    featured: false,
+    category: 'Hackathons'
   },
   {
     id: 'portfolio-website',
-    title: 'Portfolio Website',
-    description: 'A personal portfolio website showcasing my projects, skills, and experience. Built with Next.js and Tailwind CSS.',
-    image: '/images/projects/portfolio.jpg',
-    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
-    githubUrl: 'https://github.com/yourusername/portfolio',
-    liveUrl: 'https://yourdomain.com',
+    title: 'Personal Portfolio Website',
+    description: 'A responsive portfolio site showcasing projects, experience, and contact information. Built with Next.js, Tailwind CSS, and hosted on Vercel.',
+    image: '/images/portfolio.png',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    githubUrl: 'https://github.com/anola197/portfolio',
+    liveUrl: 'https://aayushi.vercel.app',
     featured: false,
-    category: 'Website'
-  },
-  {
-    id: 'recipe-sharing-platform',
-    title: 'Recipe Sharing Platform',
-    description: 'A community-driven recipe sharing platform where users can discover, share, and rate recipes. Features include user profiles, recipe collections, and search functionality.',
-    image: '/images/projects/recipe-app.jpg',
-    technologies: ['Vue.js', 'Firebase', 'Algolia', 'Cloudinary'],
-    githubUrl: 'https://github.com/yourusername/recipe-platform',
-    liveUrl: 'https://recipes.yourdomain.com',
-    featured: false,
-    category: 'Web Application'
-  },
-  {
-    id: 'blog-platform',
-    title: 'Dynamic Blog Platform',
-    description: 'A modern blog platform with markdown support, tagging, categories, and a powerful search feature.',
-    image: '/images/projects/blog.jpg',
-    technologies: ['Gatsby', 'MDX', 'GraphQL', 'Netlify CMS'],
-    githubUrl: 'https://github.com/yourusername/blog-platform',
-    liveUrl: 'https://blog.yourdomain.com',
-    featured: false,
-    category: 'Website'
-  },
-  {
-    id: 'chat-application',
-    title: 'Real-time Chat Application',
-    description: 'A real-time messaging platform with private chats, group conversations, and file sharing capabilities.',
-    image: '/images/projects/chat-app.jpg',
-    technologies: ['React', 'Firebase', 'WebSockets', 'Material UI'],
-    githubUrl: 'https://github.com/yourusername/chat-app',
-    liveUrl: 'https://chat.yourdomain.com',
-    featured: false,
-    category: 'Web Application'
-  },
+    category: 'Personal Projects'
+  }  
+  
 ];
+
 
 // Project card component
 function ProjectCard({ project }: { project: Project }) {
@@ -122,12 +113,12 @@ function ProjectCard({ project }: { project: Project }) {
           <span className="text-gray-500 dark:text-gray-400 text-lg font-medium">Project Image</span>
         </div>
         {/* Uncomment when you have actual images */}
-        {/* <Image 
+        <Image 
           src={project.image} 
           alt={project.title} 
           fill
           className="object-cover"
-        /> */}
+        />
       </div>
       
       {/* Project Content */}

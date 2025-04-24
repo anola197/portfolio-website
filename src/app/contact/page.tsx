@@ -1,7 +1,7 @@
 // src/app/contact/page.tsx
 'use client';
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 // Form field type
@@ -12,19 +12,17 @@ type FormField = {
 };
 
 export default function ContactPage() {
-  // Form state
   const [formState, setFormState] = useState({
     name: { value: '', error: '', touched: false } as FormField,
     email: { value: '', error: '', touched: false } as FormField,
     subject: { value: '', error: '', touched: false } as FormField,
     message: { value: '', error: '', touched: false } as FormField,
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
-  // Handle input changes
   const handleChange = (field: keyof typeof formState, value: string) => {
     setFormState({
       ...formState,
@@ -37,7 +35,6 @@ export default function ContactPage() {
     });
   };
 
-  // Validate a single field
   const validateField = (field: keyof typeof formState, value: string): string => {
     switch (field) {
       case 'name':
@@ -57,12 +54,9 @@ export default function ContactPage() {
     }
   };
 
-  // Validate all fields
   const validateForm = () => {
     let isValid = true;
     const newFormState = { ...formState };
-    
-    // Validate each field
     (Object.keys(formState) as Array<keyof typeof formState>).forEach((field) => {
       const errorMessage = validateField(field, formState[field].value);
       newFormState[field] = {
@@ -70,47 +64,42 @@ export default function ContactPage() {
         error: errorMessage,
         touched: true,
       };
-      
       if (errorMessage) {
         isValid = false;
       }
     });
-    
     setFormState(newFormState);
     return isValid;
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
-    
+    if (!validateForm()) return;
+
     setIsSubmitting(true);
     setSubmitError('');
-    
     try {
-      // Simulate form submission with a delay
-      // In a real application, you would replace this with an actual API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Fake successful submission
       setSubmitSuccess(true);
-      
-      // Reset form
       setFormState({
         name: { value: '', error: '', touched: false },
         email: { value: '', error: '', touched: false },
         subject: { value: '', error: '', touched: false },
         message: { value: '', error: '', touched: false },
       });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
+      // setTimeout(() => setSubmitSuccess(false), 5000);
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name.value,
+          email: formState.email.value,
+          subject: formState.subject.value,
+          message: formState.message.value,
+        }),
+      });
     } catch (error) {
       setSubmitError('There was an error sending your message. Please try again.');
     } finally {
@@ -125,100 +114,19 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-6 text-center">Get in Touch</h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-center mb-6">
-            Have a question or want to work together? Feel free to reach out using the form below 
-            or through any of my contact information.
+            Have a question or want to work together? Feel free to reach out using the form below.
           </p>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Form Section Only */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-12">
-            {/* Contact Information */}
-            <div className="lg:w-1/3">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-              
-              <div className="space-y-6 mb-8">
-                <div className="flex items-start">
-                  <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
-                    <Mail className="text-blue-600 dark:text-blue-300" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg">Email</h3>
-                    <a href="mailto:your.email@example.com" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                      aaayushi971@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
-                    <Phone className="text-blue-600 dark:text-blue-300" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg">Phone</h3>
-                    <a href="tel:+11234567890" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                      +1 (602) 662-9946
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
-                    <MapPin className="text-blue-600 dark:text-blue-300" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg">Location</h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Tempe, AZ
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Connect with Me</h2>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://github.com/yourusername" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-gray-200 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900 p-3 rounded-full transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <Github className="text-gray-800 dark:text-gray-200" size={20} />
-                  </a>
-                  
-                  <a 
-                    href="https://linkedin.com/in/yourusername" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-gray-200 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900 p-3 rounded-full transition-colors"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="text-gray-800 dark:text-gray-200" size={20} />
-                  </a>
-                  
-                  <a 
-                    href="https://twitter.com/yourusername" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-gray-200 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900 p-3 rounded-full transition-colors"
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="text-gray-800 dark:text-gray-200" size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="lg:w-2/3">
+          <div className="flex justify-center">
+            <div className="w-full lg:w-2/3">
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
                 <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
-                
+
                 {submitSuccess && (
                   <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 p-4 rounded-lg mb-6">
                     Your message has been sent successfully! I'll get back to you as soon as possible.
@@ -230,10 +138,9 @@ export default function ContactPage() {
                     {submitError}
                   </div>
                 )}
-                
+
                 <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                    {/* Name Field */}
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
                         Name <span className="text-red-500">*</span>
@@ -251,8 +158,6 @@ export default function ContactPage() {
                         <p className="mt-1 text-sm text-red-500">{formState.name.error}</p>
                       )}
                     </div>
-                    
-                    {/* Email Field */}
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">
                         Email <span className="text-red-500">*</span>
@@ -271,8 +176,7 @@ export default function ContactPage() {
                       )}
                     </div>
                   </div>
-                  
-                  {/* Subject Field */}
+
                   <div className="mb-6">
                     <label htmlFor="subject" className="block text-sm font-medium mb-2">
                       Subject <span className="text-red-500">*</span>
@@ -290,8 +194,7 @@ export default function ContactPage() {
                       <p className="mt-1 text-sm text-red-500">{formState.subject.error}</p>
                     )}
                   </div>
-                  
-                  {/* Message Field */}
+
                   <div className="mb-6">
                     <label htmlFor="message" className="block text-sm font-medium mb-2">
                       Message <span className="text-red-500">*</span>
@@ -309,8 +212,7 @@ export default function ContactPage() {
                       <p className="mt-1 text-sm text-red-500">{formState.message.error}</p>
                     )}
                   </div>
-                  
-                  {/* Submit Button */}
+
                   <div>
                     <Button 
                       type="submit" 

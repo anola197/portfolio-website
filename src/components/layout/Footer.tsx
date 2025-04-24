@@ -10,9 +10,6 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <Link href="/" className="font-bold text-xl">
-              <span className="text-blue-600">Dev</span>Portfolio
-            </Link>
             <p className="mt-2">© {new Date().getFullYear()} Aayushi. All rights reserved.</p>
           </div>
           

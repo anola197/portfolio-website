@@ -92,6 +92,7 @@ export type Project = {
     endDate: string;
     description: string;
     skills: string[];
+    location?: string; 
   }
   
   export const experienceData: ExperienceItem[] = [
@@ -103,7 +104,8 @@ export type Project = {
       endDate: 'Present',
       description:
         'Led full-stack development of the Knowledge Alliance Tool (KAT) using React, .NET Core, and FastAPI. Improved semantic search with FAISS, optimized PostgreSQL queries, migrated data from SQL Server, and enforced secure access with JWT-based RBAC.',
-      skills: ['React', '.NET Core', 'FastAPI', 'PostgreSQL', 'SQL Server', 'FAISS', 'RBAC', 'JWT', 'CI/CD', 'DynamodB']
+      skills: ['React', '.NET Core', 'FastAPI', 'PostgreSQL', 'SQL Server', 'FAISS', 'RBAC', 'JWT', 'CI/CD', 'DynamodB'],
+      location: 'Tempe, AZ'
     },
     {
       id: 'senior-analyst-accenture',
@@ -113,7 +115,8 @@ export type Project = {
       endDate: 'Jul 2023',
       description:
         'Developed distributed MES APIs and dashboards using .NET, React, and Azure. Refactored PL/SQL for faster APIs, implemented CI/CD pipelines, real-time monitoring with Grafana, and automated multi-tenant script deployments.',
-      skills: ['C#', '.NET', 'React', 'Azure', 'PL/SQL', 'Docker', 'Grafana', 'Prometheus']
+      skills: ['C#', '.NET', 'React', 'Azure', 'PL/SQL', 'Docker', 'Grafana', 'Prometheus'],
+      location: 'Banagalore, India'
     },
     {
       id: 'analyst-accenture',
@@ -123,7 +126,8 @@ export type Project = {
       endDate: 'Feb 2022',
       description:
         'Built serverless data pipelines with Azure Functions for financial data processing. Created KPIs and reporting APIs secured by AAD, handling millions of records efficiently.',
-      skills: ['Azure Functions', 'CI/CD', 'SQL', 'AAD', 'ETL', 'API Development']
+      skills: ['Azure Functions', 'CI/CD', 'SQL', 'AAD', 'ETL', 'API Development'],
+      location: 'Banagalore, India'
     },
     {
       id: 'associate-accenture',
@@ -133,7 +137,8 @@ export type Project = {
       endDate: 'May 2021',
       description:
         'Developed responsive web interfaces and integrated real-time MES dashboards with SCADA/PLC systems for a tire manufacturing client. Translated complex workflows into scalable .NET + Angular solutions.',
-      skills: ['C#', '.NET', 'Angular', 'SCADA', 'MES', 'Manufacturing Systems']
+      skills: ['C#', '.NET', 'Angular', 'SCADA', 'MES', 'Manufacturing Systems'],
+      location: 'Banagalore, India'
     }
   ];
   
