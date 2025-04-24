@@ -38,12 +38,12 @@ export default function Navigation() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Add a client-side rendering check
-  const [mounted, setMounted] = useState(false);
+  // const [mounted, setMounted] = useState(false);
 
   // Only show theme toggle after component has mounted
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
