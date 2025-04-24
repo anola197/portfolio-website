@@ -1,8 +1,8 @@
 // src/app/projects/page.tsx
 'use client';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { Github, ExternalLink, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
@@ -277,7 +277,7 @@ export default function ProjectsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Have a Project in Mind?</h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            I&aposm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
           <Button href="/contact">Start a Conversation</Button>
         </div>

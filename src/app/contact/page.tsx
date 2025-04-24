@@ -100,7 +100,7 @@ export default function ContactPage() {
           message: formState.message.value,
         }),
       });
-    } catch (error) {
+    } catch {
       setSubmitError('There was an error sending your message. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -129,7 +129,7 @@ export default function ContactPage() {
 
                 {submitSuccess && (
                   <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 p-4 rounded-lg mb-6">
-                    Your message has been sent successfully! I'll get back to you as soon as possible.
+                    Your message has been sent successfully! I&apos;ll get back to you as soon as possible.
                   </div>
                 )}
                 

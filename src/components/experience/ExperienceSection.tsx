@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { type ExperienceItem } from '@/lib/data';
-import { ChevronRight, Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 
 type ExperienceSectionProps = {
   experiences: ExperienceItem[];

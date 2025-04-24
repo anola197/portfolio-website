@@ -8,7 +8,7 @@ type ExperienceCardProps = {
   position?: 'left' | 'right';  // Making position optional since we're changing the layout
 };
 
-export default function ExperienceCard({ experience, position = 'left' }: ExperienceCardProps) {
+export default function ExperienceCard({ experience }: ExperienceCardProps) {
   const [showAllSkills, setShowAllSkills] = useState(false);
   const displaySkills = showAllSkills ? experience.skills : experience.skills.slice(0, 5);
   const skillCount = experience.skills.length;

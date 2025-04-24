@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ReactNode, ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
 type ButtonVariant = 'primary' | 'outline' | 'secondary';
 

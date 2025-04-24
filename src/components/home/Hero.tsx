@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <div>
-            <p className="text-blue-600 font-medium mb-2">👋 Hello, I'm</p>
+            <p className="text-blue-600 font-medium mb-2">👋 Hello, I&aposm</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Aayushi</h1>
             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-600 dark:text-gray-300">
               Full Stack Developer
