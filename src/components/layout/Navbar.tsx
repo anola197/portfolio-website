@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../theme/ThemeProvider';
+// import { useTheme } from '../theme/ThemeProvider';
 
 const navLinks = [
   // { href: '/', label: 'Home' },
@@ -16,23 +16,23 @@ const navLinks = [
 ];
 
 // Separate ThemeToggle to inline it (avoid the import issue)
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+// function ThemeToggle() {
+//   const { theme, toggleTheme } = useTheme();
 
-  return (
-    <button
-      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-      onClick={toggleTheme}
-    >
-      {theme === 'dark' ? (
-        <Sun className="h-5 w-5 text-yellow-400" />
-      ) : (
-        <Moon className="h-5 w-5 text-gray-600" />
-      )}
-    </button>
-  );
-}
+//   return (
+//     <button
+//       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+//       className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+//       onClick={toggleTheme}
+//     >
+//       {theme === 'dark' ? (
+//         <Sun className="h-5 w-5 text-yellow-400" />
+//       ) : (
+//         <Moon className="h-5 w-5 text-gray-600" />
+//       )}
+//     </button>
+//   );
+// }
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -50,7 +50,7 @@ export default function Navigation() {
   };
 
   // The theme toggle button that handles SSR gracefully
-  const themeToggleButton = mounted ? <ThemeToggle /> : null;
+  // const themeToggleButton = mounted ? <ThemeToggle /> : null;
 
   return (
     <header className="sticky top-0 z-50 bg-gray-100 dark:bg-gray-400 shadow-sm">
@@ -85,7 +85,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            {themeToggleButton}
+            {/* {themeToggleButton} */}
             <button
               onClick={toggleMenu}
               className="ml-2 p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
